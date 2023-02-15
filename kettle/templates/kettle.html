@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Kettle{% endblock title %}
+{% block head %}
+  {% if kettle.status == 1 and not kettle.broken %}
+    <script>
+      setInterval(function() {
+        location.reload();
+      }, 1000);
+    </script>
+  {% endif %}
+{% endblock head %}
+{% block content %}
+  <h1 class="display-4">Kettle</h1>
+    <p class="lead">Current water amount: {{ kettle.water_amount }} liters</p>
+    {% if kettle.temperature >= boiling_temperature %}
+      <p class="lead">The water has reached the boiling temperature!</p>
+    {% else %}
+      <p class="lead">Current temperature: {{ kettle.temperature }}C</p>
+    {% endif %}
+    {% if not kettle.broken %}
+      <form method="POST">
+        {% if kettle.status == 1 %}
+          <p class="lead">The kettle is turned ON now.</p>
+          <input type="submit" name="switch_status" value="Turn Off" class="btn btn-danger">
+        {% else %}
+          <p class="lead">The kettle is turned OFF now.</p>
+          <input type="submit" name="switch_status" value="Turn On" class="btn btn-primary">
+        {% endif %}
+      </form>
+    {% else %}
+      <p style="color: red">You broke the kettle.</p>
+    {% endif %}
+{% endblock content %}

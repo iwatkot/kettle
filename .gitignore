@@ -1,0 +1,5 @@
+.venv/
+kettle/__pycache__
+kettle/logs
+tests/
+*.sqlite

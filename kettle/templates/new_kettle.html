@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}New Kettle{% endblock title %}
+{% block content %}
+  <h1 class="display-4">New Kettle</h1>
+  {% if error %}
+    <p style="color: red">{{ error }}</p>
+  {% endif %}
+  <p class="lead">Enter the amount of water in the kettle between {{ minimum_water_amount }} and {{ maximum_water_amount }}.</p>
+  <form method="post">
+    <input type="text" id="water_amount" name="water_amount"><br><br>
+    <input type="submit" value="Create Kettle" class="btn btn-primary">
+  </form>
+{% endblock content %}

@@ -1,0 +1,32 @@
+[tool.poetry]
+name = "kettle"
+version = "0.1.0"
+description = "A Python project for controlling a kettle."
+authors = ["iwatkot <iwatkot@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+toml = "^0.10.2"
+pydantic = {extras = ["dotenv"], version = "^1.10.4"}
+prompt = "^0.4.1"
+flask = "^2.2.2"
+bootstrap-flask = "^2.2.0"
+
+[tool.poetry.scripts]
+start = "kettle.kettle:start"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[kettle_config]
+manufacturer = 'Vitek'
+model = 'VT-1155'
+volume = 1.7
+color = 'black'
+power = 2200
+voltage = 220
+wire_len = 0.75
+warranty = 12
+database = 'kettle.sqlite'
